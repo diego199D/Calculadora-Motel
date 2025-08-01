@@ -16,7 +16,7 @@
             <P>Calcular tiempo y cuenta del cliente</P>
         </div>
         <div class="cajaElementos">
-            <h3>🚶‍♂️‍➡️Hora de Entrada</h3>
+            <h3>📥Hora de Entrada</h3>
 
             <div class="entradas">
                 <div class="cajitaEntrada">
@@ -110,7 +110,7 @@
                 </div>
             </div>
 
-            <h3>🚶‍♂️Hora de salida</h3>
+            <h3>📤Hora de salida</h3>
 
             <div class="entradas">
                 <div class="cajitaEntrada">
@@ -198,21 +198,25 @@
                 <div class="cajitaEntrada">
                     <label>Periodo</label>
                     <select id="periodoSalida">
-                        <option value="am">AM</option>
-                        <option value="pm">PM</option>
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
                     </select>
                 </div>
+            </div>
+
+            <div class="botonHoraActual">
+                <button id="horaActualBtn">Hora Actual</button>
             </div>
 
 
             <div class="cajaPrecio">
                 <h4>tarifa por hora ($)</h4>
-                <input type="text">
+                <input type="text" id="inputTarifa">
             </div>
 
-            <button id="calcularBtn">🖩 Calcular tiempo y Costo</button>
+            <button id="calcularBtn">💰Calcular tiempo y Costo</button>
 
-            <div class="resultado">
+            <div class="resultado" id="resultado" >
                 <h3>📋 Resultado</h3>
                 <div class="resultadoCaja">
                     <p>Hora de entrada:</p>
@@ -225,6 +229,10 @@
                 <div class="resultadoCaja">
                     <p>Tiempo Total:</p>
                     <p id="totalTiempoR">...</p>
+                </div>
+                <div class="resultadoCaja">
+                    <p>Tarifa:</p>
+                    <p id="resultTarifa">...</p>
                 </div>
                 <div class="resultadoCaja" id="sinMargen">
                     <p>Costo Total:</p>
