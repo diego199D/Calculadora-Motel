@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const tarifa = parseFloat(document.getElementById("inputTarifa").value);
 
-
         //convertimos el tiempo en 24 horas con la funcion para convertir
         const entrada24 = convertir24Horas(horaEntrada, minutoEntrada, periodoEntrada);
         const salida24 = convertir24Horas(horaSalida, minutoSalida, periodoSalida);
@@ -34,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let calcMinutosSalida = salida24.horas * 60 + salida24.minutos;
 
         //manejar el caso en que sea el dia siguiente:
-        if ((salida24.horas < entrada24.horas) || salida24.horas === entrada24.horas && salida24.minutos < entrada24.minutos) {
+        if ((salida24.horas < entrada24.horas) || (salida24.horas === entrada24.horas && salida24.minutos < entrada24.minutos)) {
             calcMinutosSalida = calcMinutosSalida + 24 * 60; //anado un dia de 24 horas
         }
 
@@ -48,10 +47,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const horasTotales = horas + (minutos / 60);
         const costo = calcularCostoEspecial(horas, minutos, tarifa);
 
-
         //formatear hora
-        const formatoEntrada = formatearTiempo(horaEntrada, minutoEntrada, periodoEntrada);
-        const formatoSalida = formatearTiempo(horaSalida, minutoSalida, periodoSalida);
+        const formatoEntrada = formatearTiempo(horaEntrada, minutoEntrada, periodoEntrada.toUpperCase());
+        const formatoSalida = formatearTiempo(horaSalida, minutoSalida, periodoSalida.toUpperCase());
 
         //mostramos resultados
         document.getElementById("hrEntradaR").textContent = formatoEntrada;
@@ -68,7 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function convertir24Horas(hora, minuto, periodo) {
         let horas = hora;
 
-        if (periodo === 'AM') {
+        // Normalizar a mayúsculas para evitar errores
+        const per = periodo.toUpperCase();
+
+        if (per === 'AM') {
             if (hora === 12) {
                 horas = 0; // 12 AM es 0:00
             }
@@ -115,36 +116,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //para calcular el costo:
     function calcularCostoEspecial(horas, minutos, tarifaBase) {
-    if (horas === 0 && minutos > 0) {
-        // Menos de una hora, siempre se cobra tarifa base
-        return tarifaBase;
+        if (horas === 0 && minutos > 0) {
+            // Menos de una hora, siempre se cobra tarifa base
+            return tarifaBase;
+        }
+        
+        if (horas === 0 && minutos === 0) {
+            // Tiempo 0, no cobrar
+            return 0;
+        }
+
+        // Costo por la primera hora
+        let costo = tarifaBase;
+
+        // Horas completas después de la primera
+        let horasExtras = horas > 1 ? horas - 1 : 0;
+
+        // Cada hora extra a 20 Bs (o tarifaBase - 10 en tu ejemplo)
+        costo += horasExtras * 20;
+
+        // Minutos extra después de la última hora completa
+        if (minutos >= 24) {
+            // Cobrar una hora extra completa
+            costo += 20;
+        } else if (minutos >= 17 && minutos <= 23) {
+            // Cobrar extra fijo (10 Bs)
+            costo += 10;
+        } // de 0 a 16 minutos no se cobra nada extra
+
+        return costo;
     }
-    
-    if (horas === 0 && minutos === 0) {
-        // Tiempo 0, no cobrar
-        return 0;
-    }
-
-    // Costo por la primera hora
-    let costo = tarifaBase;
-
-    // Horas completas después de la primera
-    let horasExtras = horas > 1 ? horas - 1 : 0;
-
-    // Cada hora extra a 20 Bs (o tarifaBase - 10 en tu ejemplo)
-    costo += horasExtras * 20;
-
-    // Minutos extra después de la última hora completa
-    if (minutos >= 24) {
-        // Cobrar una hora extra completa
-        costo += 20;
-    } else if (minutos >= 17 && minutos <= 23) {
-        // Cobrar extra fijo (10 Bs)
-        costo += 10;
-    } // de 0 a 16 minutos no se cobra nada extra
-
-    return costo;
-}
-
 
 });
+
