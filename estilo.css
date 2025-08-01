@@ -70,6 +70,27 @@ body {
     border-color: rgb(224, 224, 224);
 }
 
+
+#horaActualBtn{
+    margin-top: 20px;
+    background-color: #4f44a3;
+    color: white;
+    font-size: 20px;
+    border: none;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.4);
+    border-radius: 9px;
+    padding: 7px;
+    font-weight: bold; 
+}
+.botonHoraActual{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#horaActualBtn:active{
+    transform: translateY(2px);
+}
+
 .cajaPrecio{
     background-color: #e0f2fb;
     display: flex;
@@ -119,6 +140,7 @@ body {
     margin-top: 20px;
     padding: 10px;
     border-radius: 15px;
+    display: none;
 }
 
 .resultado h3{
