@@ -70,6 +70,10 @@ body {
     border-color: rgb(224, 224, 224);
 }
 
+select{
+    font-size: 18px;
+    font-weight: bold;
+}
 
 #horaActualBtn{
     margin-top: 20px;
