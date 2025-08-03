@@ -95,7 +95,7 @@ select{
 #horaActualBtn:active{
     transform: translateY(2px);
     box-shadow: 0px 0px 20px #4f44a3;
-    background-color: #2c404f;
+    background-color: #0081e4;
 }
 
 .cajaPrecio{
