@@ -141,10 +141,6 @@ select{
     box-shadow: 0px 0px 20px #4f44a3;
     background-color: #2c404f;
 }
-#calcularBtn:hover{
-    box-shadow: 0px 0px 20px #4f44a3;
-    background-color: #2c404f;
-}
 
 .resultado{
     display: flex;
