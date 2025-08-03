@@ -105,6 +105,7 @@
                 <div class="cajitaEntrada">
                     <label>Periodo</label>
                     <select id="periodoEntrada">
+                        <option value="00"></option>
                         <option value="am">AM</option>
                         <option value="pm">PM</option>
                     </select>
@@ -117,6 +118,7 @@
                 <div class="cajitaEntrada">
                     <label>Hora</label>
                     <select id="horaSalida">
+                        <option value="00"></option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -134,6 +136,7 @@
                 <div class="cajitaEntrada">
                     <label>Minutos</label>
                     <select id="minutosSalida">
+                        <option value="00"></option>                        
                         <option value="00">00</option>
                         <option value="01">01</option>
                         <option value="02">02</option>
@@ -199,6 +202,7 @@
                 <div class="cajitaEntrada">
                     <label>Periodo</label>
                     <select id="periodoSalida">
+                        <option value="00"></option>
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                     </select>
@@ -212,7 +216,7 @@
 
             <div class="cajaPrecio">
                 <h4>tarifa por hora ($)</h4>
-                <input type="text" id="inputTarifa">
+                <input type="text" id="inputTarifa" readonly>
             </div>
 
             <button id="calcularBtn">💰Calcular tiempo y Costo</button>
