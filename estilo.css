@@ -17,6 +17,8 @@ body {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
+    width: 97%;
+    max-width: 500px
 }
 
 .cabecera{
@@ -173,6 +175,7 @@ select{
     color: rgb(0, 174, 0);
     font-weight: bold;
     font-size: 25px;
+    text-shadow: 0 0 10px black;
 }
 
 .footer{
